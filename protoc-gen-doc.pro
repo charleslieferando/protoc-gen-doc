@@ -1,5 +1,5 @@
 TEMPLATE = app
-VERSION = 0.5
+VERSION = 0.6
 
 CONFIG += console c++11
 CONFIG -= app_bundle
@@ -8,6 +8,10 @@ QT -= gui
 HEADERS += src/mustache.h
 SOURCES += src/mustache.cpp src/main.cpp
 RESOURCES += protoc-gen-doc.qrc
+
+isEmpty(PREFIX):PREFIX = /usr/local
+target.path = $$PREFIX/bin
+INSTALLS += target
 
 lessThan(QT_MAJOR_VERSION, 5):error(This program requires Qt 5.x.)
 
